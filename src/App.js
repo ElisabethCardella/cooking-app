@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { VStack } from "@chakra-ui/react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import SelectCountry from "./pages/SelectCountry";
+import SelectTypeOfMeal from "./pages/SelectTypeOfMeal";
+import SelectTheRecipe from "./pages/SelectTheRecipe";
+import SelectCalendar from "./pages/SelectCalendar";
+import ConnexionPage from "./pages/ConnexionPage";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VStack justify="space-between" height="100vh">
+      <Routes>
+        <Route path="/Home" element={<Home />} />
+        <Route path="/SelectCountry" element={<SelectCountry />} />
+        <Route path="/SelectTypeOfMeal" element={<SelectTypeOfMeal />} />
+        <Route path="/SelectTheRecipe" element={<SelectTheRecipe />} />
+        <Route path="/SelectCalendar" element={<SelectCalendar />} />
+        <Route path="/ConnexionPage" element={<ConnexionPage />} />
+      </Routes>
+    </VStack>
   );
 }
 
