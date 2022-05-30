@@ -1,6 +1,6 @@
 import { Box, Text, Center } from "@chakra-ui/react";
 import { Flex, Spacer, Button } from "@chakra-ui/react";
-import { BiHome, BiCalendar, BiSearchAlt, BiHeart } from "react-icons/bi";
+import { BiHome, BiSearchAlt, BiHeart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -18,17 +18,7 @@ const Footer = () => {
             </Box>
           </Button>
         </Link>
-        <Spacer />
-        <Link to="/SelectCalendar">
-          <Button bg="#D3793F">
-            <Box>
-              <Center>
-                <BiCalendar fontSize="25" color="white" />
-              </Center>
-              <Text color="black">Calendar</Text>
-            </Box>
-          </Button>
-        </Link>
+
         <Spacer />
         <Link to="/SelectCountry">
           <Button bg="#D3793F">
