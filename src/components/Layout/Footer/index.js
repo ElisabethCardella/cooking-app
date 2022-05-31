@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Box bg="#D3793F" height="60px" w="100%" p="2.5" color="white">
+    <Box bg="#b14f0d" height="60px" w="100%" p="2.5" color="white">
       <Flex>
         <Link to="/Home">
           {" "}
-          <Button bg="#D3793F">
+          <Button bg="#b14f0d">
             <Box>
               <Center>
                 <BiHome m="auto" fontSize="25" color="black" />
@@ -21,7 +21,7 @@ const Footer = () => {
 
         <Spacer />
         <Link to="/SelectCountry">
-          <Button bg="#D3793F">
+          <Button bg="#b14f0d">
             <Box>
               <Center>
                 <BiSearchAlt fontSize="25" color="white" />
@@ -31,7 +31,7 @@ const Footer = () => {
           </Button>
         </Link>
         <Spacer />
-        <Button bg="#D3793F">
+        <Button bg="#b14f0d">
           <Box>
             <Center>
               <BiHeart fontSize="25" color="white" />

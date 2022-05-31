@@ -2,6 +2,8 @@ import { Select } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 import { getRecipes } from "../../services/recipeService";
+import MealItem from "../Meals/MealItem";
+import Card from "../UI/Card/Card";
 
 const Selector = () => {
   const [countries, setCountries] = useState([]);
@@ -23,10 +25,14 @@ const Selector = () => {
   //if the selectedCountry changes, it run again,
   //if there is nothing, it will run only one time
 
+  const onChangeHandler = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+
   return (
     <div>
       <Select
-        onChange={(e) => setSelectedCountry(e.target.value)}
+        onChange={onChangeHandler}
         id="countries"
         placeholder="I want to cook a recipe from ..."
       >
@@ -40,10 +46,15 @@ const Selector = () => {
             </option>
           ))}
       </Select>
+
       {recipes.map((recipe) => (
-        <ul>
-          <li value={recipe}> {recipe.name}</li>
-        </ul>
+          <MealItem
+            key={recipe.id}
+            name={recipe.name}
+            description={recipe.description}
+            image = {recipe.image}
+            numberOfReviews = {recipe.numberOfReviews}
+          />
       ))}
     </div>
   );

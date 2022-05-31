@@ -32,7 +32,7 @@ const Login = (props) => {
 
   return (
     <FormControl w="80%" h="50%" onSubmit={submitHandler}>
-      <h1>Connexion</h1>
+      <h2 className={classes.title}>Connexion</h2>
       <div
         className={`${classes.control} ${
           emailIsValid === false ? classes.invalid : ""

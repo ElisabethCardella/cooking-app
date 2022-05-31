@@ -5,6 +5,10 @@
   padding: 2rem;
   border: #4f005f;
 }
+.title {
+  font-size: x-large;
+  font-weight: 400;
+}
 
 .control {
   margin: 1rem 0;
