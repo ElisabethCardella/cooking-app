@@ -3,7 +3,7 @@ import { Heading } from "@chakra-ui/react";
 const WelcomeUser = () => {
   const DateToday = new Date();
   const myHour = DateToday.getHours();
-  console.log(myHour)
+  console.log(myHour);
   const generateWelcomeMessage = () => {
     if (myHour < 12) {
       return "Good morning";
@@ -14,9 +14,7 @@ const WelcomeUser = () => {
     }
   };
 
-  return (
-  
-  <Heading>{generateWelcomeMessage()} back 'props.UserName'</Heading>)
+  return <Heading>{generateWelcomeMessage()} 'props.UserName'</Heading>;
 };
 
 export default WelcomeUser;

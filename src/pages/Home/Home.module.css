@@ -1,43 +1,30 @@
-.main-image {
-    width: 100%;
-    height: 25rem;
-    z-index: 0;
-    overflow: hidden;
-  }
-  
-  .main-image img {
-    width: 110%;
-    height: 100%;
-    object-fit: cover;
-    transform: rotateZ(-5deg) translateY(-9rem) translateX(-0.2rem)}
-  
 .summary-recipe-day {
-      text-align: center;
-      max-width: 45rem;
-      width: 90%;
-      margin: auto;
-      margin-top: -10rem;
-      position: relative;
-      background-color: #383838;
-      color: white;
-      border-radius: 14px;
-      padding: 1rem;
-      box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
-    }
-    
+  text-align: center;
+  max-width: 45rem;
+  width: 90%;
+  margin: auto;
+  margin-top: -10rem;
+  position: relative;
+  background-color: #b0a0a0;
+  color: white;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+}
+
 .summary-recipe-day h2 {
-      font-size: 2rem;
-      margin-top: 0;
-    }
+  font-size: 2rem;
+  margin-top: 0;
+}
 
 .summary-recipe-day img {
-      width: 400px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-      border-radius: 10px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
+  width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
 
 .container {
   display: flex;
@@ -47,18 +34,17 @@
   color: black;
 }
 
-
-.options {
+.option {
   display: flex;
   justify-content: center;
   width: 100%;
   padding-left: 50px;
   margin-left: 50px;
-
+  background-image: url("../../assets/img/worldMealImage.jpeg");
+  opacity: 0.5;
 }
 
 .option1 {
   width: 80%;
-
-
+  opacity: 1;
 }

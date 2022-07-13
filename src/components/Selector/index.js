@@ -1,9 +1,9 @@
 import { Select } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { getRecipes } from "../../services/recipeService";
+import FavoriteRecipesContext from "../../store/FavoriteRecipesContext";
 import MealItem from "../Meals/MealItem";
-import Card from "../UI/Card/Card";
 
 const Selector = () => {
   const [countries, setCountries] = useState([]);
@@ -48,13 +48,7 @@ const Selector = () => {
       </Select>
 
       {recipes.map((recipe) => (
-          <MealItem
-            key={recipe.id}
-            name={recipe.name}
-            description={recipe.description}
-            image = {recipe.image}
-            numberOfReviews = {recipe.numberOfReviews}
-          />
+        <MealItem key={recipe.id} recipe={recipe} />
       ))}
     </div>
   );

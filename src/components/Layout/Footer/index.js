@@ -20,7 +20,7 @@ const Footer = () => {
         </Link>
 
         <Spacer />
-        <Link to="/SelectCountry">
+        <Link to="/SelectCountryPage">
           <Button bg="#b14f0d">
             <Box>
               <Center>
@@ -31,14 +31,16 @@ const Footer = () => {
           </Button>
         </Link>
         <Spacer />
-        <Button bg="#b14f0d">
-          <Box>
-            <Center>
-              <BiHeart fontSize="25" color="white" />
-            </Center>
-            <Text color="black">Favourites</Text>
-          </Box>
-        </Button>
+        <Link to="/FavouritePage">
+          <Button bg="#b14f0d">
+            <Box>
+              <Center>
+                <BiHeart fontSize="25" color="white" />
+              </Center>
+              <Text color="black">Favourites</Text>
+            </Box>
+          </Button>
+        </Link>
       </Flex>
     </Box>
   );
