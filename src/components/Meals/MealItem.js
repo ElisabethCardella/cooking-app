@@ -5,23 +5,35 @@ import classes from "./MealItem.module.css";
 import { BiHeart } from "react-icons/bi";
 import { useContext } from "react";
 import FavoriteRecipesContext from "../../store/FavoriteRecipesContext";
+import OpenRecipesContext from "../../store/OpenRecipesContext";
 
 const MealItem = (props) => {
   const { favouriteRecipes, setFavouriteRecipes } = useContext(
     FavoriteRecipesContext
   );
 
+  const { setOpenRecipe } = useContext(OpenRecipesContext);
+
   const onClickHandler = () => {
-    const updatedFavouriteRecipes = [...favouriteRecipes];
+    let updatedFavouriteRecipes = [...favouriteRecipes];
 
     if (
       !updatedFavouriteRecipes.some((recipe) => recipe.id === props.recipe.id) // if recipe is not in favourites, then push
     ) {
       updatedFavouriteRecipes.push(props.recipe);
+    } else {
+      updatedFavouriteRecipes = updatedFavouriteRecipes.filter(
+        (recipe) => recipe.id !== props.recipe.id
+      );
     }
 
     setFavouriteRecipes(updatedFavouriteRecipes);
   };
+
+  const onShowRecipeHandler = () => {
+    return setOpenRecipe(props.recipe);
+  };
+
   return (
     <Card className={classes.meal}>
       <img
@@ -38,11 +50,17 @@ const MealItem = (props) => {
           <BiHeart
             className={classes.icon}
             fontSize="25"
-            color="red"
+            color={
+              favouriteRecipes.find(
+                (favouriteRecipe) => favouriteRecipe.id === props.recipe.id
+              )
+                ? "red"
+                : "black"
+            }
             fill="currentColor"
           />
         </div>
-        <Button>Show recipe</Button>
+        <Button onClick={onShowRecipeHandler}>Show recipe</Button>
         <StarIcon color="red.500" />
         {props.numberOfReviews} reviews
       </div>

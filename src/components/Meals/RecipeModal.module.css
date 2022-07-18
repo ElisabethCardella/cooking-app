@@ -1,0 +1,53 @@
+.title {
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.img {
+  width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: large;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.details {
+  padding: 2rem;
+}
+
+.subtitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.ingredients {
+  background-color: rgb(229, 228, 226);
+  padding: 2rem;
+}
+
+.ol li {
+  padding-top: 8px;
+}
+
+.glove {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -6,18 +6,25 @@ import FavouritePage from "./pages/FavouritePage";
 import ConnexionPage from "./pages/ConnexionPage";
 import Home from "./pages/Home";
 import FavoriteRecipeContextProvider from "./store/FavouritesContextProvider";
+import OpenRecipesContextProvider from "./store/OpenRecipesContextProvider";
+import RecipeModal from "./components/Meals/RecipeModal";
 
 function App() {
   return (
     <FavoriteRecipeContextProvider>
-      <VStack justify="space-between" height="100vh">
-        <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/SelectCountryPage" element={<SelectCountryPage />} />
-          <Route path="/ConnexionPage" element={<ConnexionPage />} />
-          <Route path="/FavouritePage" element={<FavouritePage />} />
-        </Routes>
-      </VStack>
+      <OpenRecipesContextProvider>
+        <VStack justify="space-between" height="100vh">
+          <Routes>
+            <Route path="/Home" element={<Home />} />
+            <Route path="/SelectCountryPage" element={<SelectCountryPage />} />
+            <Route path="/ConnexionPage" element={<ConnexionPage />} />
+            <Route path="/FavouritePage" element={<FavouritePage />} />
+          </Routes>
+        </VStack>
+        <>
+          <RecipeModal />
+        </>
+      </OpenRecipesContextProvider>
     </FavoriteRecipeContextProvider>
   );
 }

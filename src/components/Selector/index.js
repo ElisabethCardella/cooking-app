@@ -1,4 +1,4 @@
-import { Select } from "@chakra-ui/react";
+import { Button, Select } from "@chakra-ui/react";
 import { useState, useEffect, useContext } from "react";
 
 import { getRecipes } from "../../services/recipeService";
@@ -50,6 +50,8 @@ const Selector = () => {
       {recipes.map((recipe) => (
         <MealItem key={recipe.id} recipe={recipe} />
       ))}
+
+      <Button>Add my recipe</Button>
     </div>
   );
 };
