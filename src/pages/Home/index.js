@@ -13,11 +13,11 @@ function Home() {
   const [randomRecipe, setRandomRecipe] = useState();
   const { setOpenRecipe } = useContext(OpenRecipesContext);
 
-  useEffect(() => {
-    const recipes = getRecipes();
+  // useEffect(() => {
+  //   const recipes = getRecipes();
 
-    setRandomRecipe(recipes[Math.floor(Math.random() * recipes.length)]);
-  }, []);
+  //   setRandomRecipe(recipes[Math.floor(Math.random() * recipes.length)]);
+  // }, []);
 
   const onShowRecipeHandler = () => {
     return setOpenRecipe(randomRecipe);
@@ -26,6 +26,7 @@ function Home() {
   return (
     <Layout>
       <WelcomeUser />
+
       <Container className={classes["summary-recipe-day"]}>
         <h2>Discover the recipe of the day</h2>
         <p>Discover the meal of today to travel all around the world.</p>

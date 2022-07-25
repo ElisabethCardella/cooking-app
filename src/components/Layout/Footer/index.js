@@ -20,13 +20,13 @@ const Footer = () => {
         </Link>
 
         <Spacer />
-        <Link to="/SelectCountryPage">
+        <Link to="/SelectCuisinePage">
           <Button bg="#b14f0d">
             <Box>
               <Center>
                 <BiSearchAlt fontSize="25" color="white" />
               </Center>
-              <Text color="black">Country</Text>
+              <Text color="black">Cuisine</Text>
             </Box>
           </Button>
         </Link>

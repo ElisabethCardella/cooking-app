@@ -64,7 +64,7 @@ const RecipeModal = () => {
             </div>
             <div>
               <ViewIcon margin="6px" />
-              {openRecipe.numberOfReviews}reviews
+              {openRecipe.rating}stars
             </div>
           </div>
           <Card className={classes.ingredients}>

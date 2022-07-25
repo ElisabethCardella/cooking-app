@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^1.8.7",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "@mui/material": "^5.9.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
@@ -25,7 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --max_old_space_size=4096",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

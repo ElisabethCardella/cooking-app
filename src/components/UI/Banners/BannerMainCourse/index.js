@@ -6,7 +6,7 @@ const BannerMainCourse = () => {
     imageUrl:
       "https://www.olivemagazine.com/recipes/collection/best-ever-starter-recipes/",
     title: "Main Course",
-    country: "Italy",
+    cuisine: "Italy",
     reviewCount: 34,
     rating: 4,
   };
@@ -19,7 +19,7 @@ const BannerMainCourse = () => {
       <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
         {property.title}
         <br></br>
-        {property.country}
+        {property.cuisine}
         <Box>
           <StarIcon color="red.500" />
           {property.reviewCount} reviews

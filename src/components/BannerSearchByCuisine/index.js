@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Spacer } from "@chakra-ui/react";
 import { BiWorld } from "react-icons/bi";
 
-const BannerSearchByCountry = () => {
+const BannerSearchByCuisine = () => {
   return (
     <Flex>
       <Box p="4">
@@ -9,10 +9,10 @@ const BannerSearchByCountry = () => {
       </Box>
       <Spacer />
       <Heading as="h2" p="4">
-        Search by Country
+        Search by Cuisine
       </Heading>
     </Flex>
   );
 };
 
-export default BannerSearchByCountry;
+export default BannerSearchByCuisine;

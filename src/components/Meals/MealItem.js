@@ -60,9 +60,17 @@ const MealItem = (props) => {
             fill="currentColor"
           />
         </div>
-        <Button onClick={onShowRecipeHandler}>Show recipe</Button>
-        <StarIcon color="red.500" />
-        {props.numberOfReviews} reviews
+        <Button
+          marginTop="10px"
+          marginBottom="10px"
+          onClick={onShowRecipeHandler}
+        >
+          Show recipe
+        </Button>
+        <div>
+          <StarIcon color="red.500" marginRight="6px" />
+          {props.recipe.rating} stars
+        </div>
       </div>
     </Card>
   );

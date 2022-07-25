@@ -1,16 +1,16 @@
-export const getRecipes = (countryFilter) => {
-  return [
+export const getRecipes = (cuisineFilter) => {
+  [
     {
       id: "1",
       name: "Pierogi",
-      country: "Poland",
+      cuisine: "Poland",
       description: "The description for the meal is comming soon",
       image:
         "https://larecettepolonaise.fr/wp-content/uploads/2020/11/Pierogi-a-la-choucroute.jpg",
-      numberOfReviews: 32,
+      rating: 4,
       time: "51minutes",
       difficulty: "Medium",
-      numberOfPersonn: "4",
+      numberOfPerson: "4",
       ingredients: [
         "600 g potato (not new, more bintje)",
         "250 g of cottage cheese such as cottage cheese",
@@ -41,14 +41,14 @@ export const getRecipes = (countryFilter) => {
     {
       id: "2",
       name: "Gratin",
-      country: "France",
+      cuisine: "France",
       description: "The description for the meal is comming soon",
       image:
         "https://media.istockphoto.com/photos/potato-gratin-backed-potato-slices-with-creamy-sauce-top-view-picture-id953937312?k=20&m=953937312&s=612x612&w=0&h=EQ58q1LyiiAzrzreAHgPSvsVdokZnt-MJdEHrvcBIVY=",
-      numberOfReviews: 23,
+      rating: 3,
       time: "1hour and 25minutes",
       difficulty: "Easy",
-      numberOfPersonn: "6",
+      numberOfPerson: "6",
       ingredients: [
         "1.5 kg of potato",
         "2 cloves garlic",
@@ -71,14 +71,14 @@ export const getRecipes = (countryFilter) => {
     {
       id: "3",
       name: "Cheese",
-      country: "France",
+      cuisine: "France",
       description: "The description for the meal is comming soon",
       image:
         "https://www.lalibre.be/resizer/YHnMGTL7ixORnGQM2ZpaCWbobdU=/0x0:2394x1593/768x512/filters:quality(70):format(jpg)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/PJPKLF7VZJDSXBMZYLTRCQLFDY.jpg",
-      numberOfReviews: 14,
+      rating: 14,
       time: "30minutes",
       difficulty: "Very Easy",
-      numberOfPersonn: "4",
+      numberOfPerson: "4",
       ingredients: [
         "2 fresh purple figs",
         "1 small handful of pine nuts",
@@ -104,7 +104,5 @@ export const getRecipes = (countryFilter) => {
         "Taste, while licking your chops.",
       ],
     },
-  ].filter((recipe) => recipe.country === countryFilter || !countryFilter);
-
-  //when there is a filter, e need to put the condition in the function
+  ].filter((recipe) => recipe.cuisine === cuisineFilter || !cuisineFilter);
 };
