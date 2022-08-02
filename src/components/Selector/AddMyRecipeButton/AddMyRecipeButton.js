@@ -25,8 +25,9 @@ import React from "react";
 import { Divider } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContext } from "react";
-import RecipesContext from "../../store/RecipesContext";
-import CuisinesContext from "../../store/CuisinesContext";
+import RecipesContext from "../../../store/RecipesContext";
+import CuisinesContext from "../../../store/CuisinesContext";
+import UserContext from "../../../store/UserContext";
 
 const AddMyRecipeButton = () => {
   const [enteredNameMeal, setenteredNameMeal] = useState(null);
@@ -35,7 +36,7 @@ const AddMyRecipeButton = () => {
   // const [enteredPictureMeal, seteEnteredPictureMeal] = useState(null);
   const [enteredRatingMeal, seteEnteredRatingMeal] = useState(null);
   const [enteredTimeNeededMeal, setenteredTimeNeededMeal] = useState(null);
-  const [enteredDifficultLevelMeal, setEnteredDifficultyLevelMeal] =
+  const [enteredDifficultyLevelMeal, setEnteredDifficultyLevelMeal] =
     useState(null);
   const [enteredNumberPersonMeal, setEnteredNumberPersonMeal] = useState(null);
   const [enteredIngredientsMeal, setEnteredIngredientsMeal] = useState(null);
@@ -43,6 +44,7 @@ const AddMyRecipeButton = () => {
   const { recipes, setRecipes } = useContext(RecipesContext);
   const { cuisines } = useContext(CuisinesContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { user, setUser } = useContext(UserContext);
 
   const onClickHandler = () => {
     onOpen();
@@ -84,33 +86,66 @@ const AddMyRecipeButton = () => {
     setEnteredStepsMeal(event.target.value);
   };
 
-  const submitHandler = () => {
-    let updatedRecipes = [...recipes];
+  const submitHandler = (event) => {
+    console.log("ca marche");
 
-    updatedRecipes.push({
-      id: "10",
-      name: enteredNameMeal,
-      cuisine: selectedNewCuisine,
-      description: "The description for the meal is comming soon",
-      image:
-        "https://larecettepolonaise.fr/wp-content/uploads/2020/11/Pierogi-a-la-choucroute.jpg",
-      rating: enteredRatingMeal,
-      time: enteredTimeNeededMeal,
-      difficulty: enteredDifficultLevelMeal,
-      numberOfPerson: enteredNumberPersonMeal,
-      ingredients: [enteredIngredientsMeal],
-      steps: [enteredStepsMeal],
-    });
+    event.preventDefault();
 
-    setRecipes(updatedRecipes);
-    console.log(updatedRecipes);
+    fetch("http://localhost:4000/recipes", {
+      // Adding method type
+      method: "POST",
+
+      // Adding body or contents to send
+      body: JSON.stringify({
+        id: "10",
+        name: enteredNameMeal,
+        cuisine: selectedNewCuisine,
+        description: "The description for the meal is comming soon",
+        image:
+          "https://larecettepolonaise.fr/wp-content/uploads/2020/11/Pierogi-a-la-choucroute.jpg",
+        rating: enteredRatingMeal,
+        time: enteredTimeNeededMeal,
+        difficulty: enteredDifficultyLevelMeal,
+        numberOfPerson: enteredNumberPersonMeal,
+        ingredients: [enteredIngredientsMeal],
+        steps: [enteredStepsMeal],
+        userId: user._id,
+      }),
+      // Adding headers to the request
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log("Error:", err));
+
+    // let updatedRecipes = [...recipes];
+
+    // // updatedRecipes.push({
+    // //   id: "10",
+    // //   name: enteredNameMeal,
+    // //   cuisine: selectedNewCuisine,
+    // //   description: "The description for the meal is comming soon",
+    // //   image:
+    // //     "https://larecettepolonaise.fr/wp-content/uploads/2020/11/Pierogi-a-la-choucroute.jpg",
+    // //   rating: enteredRatingMeal,
+    // //   time: enteredTimeNeededMeal,
+    // //   difficulty: enteredDifficultyLevelMeal,
+    // //   numberOfPerson: enteredNumberPersonMeal,
+    // //   ingredients: [enteredIngredientsMeal],
+    // //   steps: [enteredStepsMeal],
+    // //   userId: user._id,
+    // // });
+
+    // setRecipes(updatedRecipes);
+    // console.log(updatedRecipes);
 
     onClose();
   };
 
   return (
     <div>
-      <Button colorScheme="teal" onClick={onClickHandler}>
+      <Button bg="#F9DBBD" onClick={onClickHandler}>
         <AddIcon margin="6px" /> Add my recipe{" "}
       </Button>
 
@@ -193,7 +228,7 @@ const AddMyRecipeButton = () => {
             <Select
               height="50px"
               placeholder="Select the difficulty level"
-              value={enteredDifficultLevelMeal}
+              value={enteredDifficultyLevelMeal}
               onChange={difficultyLevelChangeHandler}
               paddingTop="20px"
             >

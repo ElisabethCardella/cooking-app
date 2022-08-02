@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
-import Login from "../../components/Login/Login";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import Login from "../../components/Authentification/Login/Login";
 
 const ConnexionPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -5,39 +5,39 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Box bg="#b14f0d" height="60px" w="100%" p="2.5" color="white">
+    <Box bg="#A63760" height="60px" w="100%" p="0" color="white">
       <Flex>
         <Link to="/Home">
           {" "}
-          <Button bg="#b14f0d">
+          <Button bg="transparent">
             <Box>
               <Center>
-                <BiHome m="auto" fontSize="25" color="black" />
+                <BiHome m="auto" fontSize="25" color="white" />
               </Center>
-              <Text color="black">Home</Text>
+              <Text color="white">Home</Text>
             </Box>
           </Button>
         </Link>
 
         <Spacer />
         <Link to="/SelectCuisinePage">
-          <Button bg="#b14f0d">
+          <Button bg="transparent">
             <Box>
               <Center>
                 <BiSearchAlt fontSize="25" color="white" />
               </Center>
-              <Text color="black">Cuisine</Text>
+              <Text color="white">Cuisine</Text>
             </Box>
           </Button>
         </Link>
         <Spacer />
         <Link to="/FavouritePage">
-          <Button bg="#b14f0d">
+          <Button bg="none">
             <Box>
               <Center>
                 <BiHeart fontSize="25" color="white" />
               </Center>
-              <Text color="black">Favourites</Text>
+              <Text color="white">Favourites</Text>
             </Box>
           </Button>
         </Link>
