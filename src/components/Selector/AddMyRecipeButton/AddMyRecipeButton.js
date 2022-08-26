@@ -269,7 +269,7 @@ const AddMyRecipeButton = () => {
               height="350px"
               placeholder="Type the steps here ... PUT CHECK LIST"
               value={enteredStepsMeal}
-            />
+            ></Input>
           </ModalBody>
 
           <ModalFooter>

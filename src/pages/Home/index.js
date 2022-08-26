@@ -17,7 +17,7 @@ import classes from "./Home.module.css";
 import WelcomeUser from "../../components/WelcomeUser/WelcomeUser";
 import { useContext, useEffect, useState } from "react";
 import OpenRecipesContext from "../../store/OpenRecipesContext";
-import { getRecipes } from "../../services/recipeService";
+import { getRecipes } from "../../services/recipesService";
 import RecipesContext from "../../store/RecipesContext";
 import CuisinesContext from "../../store/CuisinesContext";
 
@@ -33,20 +33,11 @@ function Home() {
       return;
     }
 
-    let url = "http://localhost:4000/recipes?type=external";
-
     const randomCuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
 
-    // fetch recipes of a random cuisine from backned
-    if (randomCuisine) {
-      url += "&cuisine=" + randomCuisine;
-    }
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((data) =>
-        setRandomRecipe(data[Math.floor(Math.random() * data.length)])
-      )
-      .catch((err) => console.log("Error:", err));
+    getRecipes(true, randomCuisine).then((data) =>
+      setRandomRecipe(data[Math.floor(Math.random() * data.length)])
+    );
   }, [cuisines]);
 
   const onShowRecipeHandler = () => {

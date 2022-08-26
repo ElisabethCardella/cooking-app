@@ -20,7 +20,11 @@ function App() {
         <RecipesContextProvider>
           <CuisinesContextProvider>
             <UserContextProvider>
-              <VStack justify="space-between" height="100vh">
+              <VStack
+                justify="space-between"
+                height="100vh"
+                backgroundColor={"#f7fafc"}
+              >
                 <Routes>
                   <Route path="/Home" element={<Home />} />
                   <Route

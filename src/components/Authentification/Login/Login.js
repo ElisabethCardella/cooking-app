@@ -5,20 +5,19 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Link,
   Button,
   Heading,
   Text,
   useColorModeValue,
-  InputAddon,
   Container,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../../store/UserContext";
+import classes from "./Login.module.scss";
 
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState();
@@ -97,14 +96,15 @@ const Login = () => {
 
   return (
     <Flex
-      minH={"100vh"}
+      minH={"60vh"}
+      maxWidth={"100%"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      className={classes.backgroundColor}
     >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={5} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Log in to your account</Heading>
+          <Heading className={classes.heading}>Log in to your account</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             to discover all your future recipes !{" "}
           </Text>
@@ -144,6 +144,7 @@ const Login = () => {
                 value={enteredPassword ?? ""}
                 onChange={passwordChangeHandler}
                 onBlur={validatePasswordHandler}
+                placeholder="hello"
               />
             </FormControl>
             <Stack spacing={10}>

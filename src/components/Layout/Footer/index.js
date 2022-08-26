@@ -2,19 +2,30 @@ import { Box, Text, Center } from "@chakra-ui/react";
 import { Flex, Spacer, Button } from "@chakra-ui/react";
 import { BiHome, BiSearchAlt, BiHeart } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import classes from "./Footer.module.scss";
 
 const Footer = () => {
   return (
-    <Box bg="#A63760" height="60px" w="100%" p="0" color="white">
-      <Flex>
+    <Box
+      className={classes.colorBacgroundFooter}
+      height="60px"
+      w="100%"
+      alignItems="baseline"
+      color="white"
+    >
+      <Flex marginTop="10px">
         <Link to="/Home">
           {" "}
           <Button bg="transparent">
             <Box>
               <Center>
-                <BiHome m="auto" fontSize="25" color="white" />
+                <BiHome
+                  className={`${classes.fontSizeIcon} ${classes.color}`}
+                />
               </Center>
-              <Text color="white">Home</Text>
+              <Text marginTop="3px" className={classes.color}>
+                Home
+              </Text>
             </Box>
           </Button>
         </Link>
@@ -24,9 +35,13 @@ const Footer = () => {
           <Button bg="transparent">
             <Box>
               <Center>
-                <BiSearchAlt fontSize="25" color="white" />
+                <BiSearchAlt
+                  className={`${classes.fontSizeIcon} ${classes.color}`}
+                />
               </Center>
-              <Text color="white">Cuisine</Text>
+              <Text marginTop="3px" className={classes.color}>
+                Cuisine
+              </Text>
             </Box>
           </Button>
         </Link>
@@ -35,9 +50,16 @@ const Footer = () => {
           <Button bg="none">
             <Box>
               <Center>
-                <BiHeart fontSize="25" color="white" />
+                <BiHeart
+                  className={`${classes.fontSizeIcon} ${classes.color}`}
+                />
               </Center>
-              <Text color="white">Favourites</Text>
+              <Text
+                marginTop="3px"
+                className={`${classes.fontSizeText} ${classes.color}`}
+              >
+                Favourites
+              </Text>
             </Box>
           </Button>
         </Link>

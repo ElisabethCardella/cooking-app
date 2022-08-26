@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Layout";
+import classes from "./SignUp.module.scss";
 
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState();
@@ -94,9 +95,9 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <Layout className={classes.backgroundColor}>
       <Flex
-        minH={"100vh"}
+        minH={"60vh"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
@@ -170,7 +171,7 @@ const Login = () => {
                   </Link>
                 </Stack>
                 <Button
-                  bg="#F9DBBD"
+                  className={classes.ButtonbackgroundButton}
                   color={"black"}
                   _hover={{
                     bg: "#450920",

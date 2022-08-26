@@ -1,5 +1,6 @@
-import { PhoneIcon, SearchIcon } from "@chakra-ui/icons";
+import { SearchIcon } from "@chakra-ui/icons";
 import {
+  Center,
   Container,
   FormLabel,
   Heading,
@@ -11,52 +12,30 @@ import {
   Switch,
 } from "@chakra-ui/react";
 import { useEffect, useContext, useState } from "react";
+import { getRecipes } from "../../services/recipesService";
 import CuisinesContext from "../../store/CuisinesContext";
 import RecipesContext from "../../store/RecipesContext";
 import UserContext from "../../store/UserContext";
 import MealItem from "../Meals/MealItem";
 import AddMyRecipeButton from "./AddMyRecipeButton/AddMyRecipeButton";
+import classes from "./index.module.scss";
 
 const Selector = () => {
   const { cuisines } = useContext(CuisinesContext);
   const { recipes, setRecipes } = useContext(RecipesContext);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [selectedCuisine, setSelectedCuisine] = useState(null);
   const [enteredText, setEnteredText] = useState(null);
   const [showExternalRecipes, setShowExternalRecipes] = useState(false);
-  const [showInternalRecipes, setShowInternalRecipes] = useState(false);
-
-  console.log(user);
 
   useEffect(() => {
-    let url = "http://localhost:4000/recipes";
+    getRecipes(showExternalRecipes, enteredText, selectedCuisine, user).then(
+      (data) => setRecipes(data)
+    ); //the order is matter and not the name of it
+  }, [selectedCuisine, enteredText, showExternalRecipes]);
 
-    if (showExternalRecipes) {
-      url += "?type=external";
-    } else {
-      url += "?type=internal&userId=" + user._id;
-    }
-
-    if (enteredText) {
-      url += "&text=" + enteredText;
-    }
-
-    if (selectedCuisine) {
-      url += "&cuisine=" + selectedCuisine;
-    }
-
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((data) => setRecipes(data))
-      .catch((err) => console.log("Error:", err));
-  }, [selectedCuisine, enteredText]);
-
-  const onChangeExternalRecipes = () => {
+  const onClickActivateExternalRecipes = () => {
     setShowExternalRecipes(!showExternalRecipes);
-  };
-
-  const onClickInternalRecipes = () => {
-    setShowInternalRecipes(!showInternalRecipes);
   };
 
   const onChangeHandler = (event) => {
@@ -73,78 +52,70 @@ const Selector = () => {
   console.log(recipes);
 
   return (
-    <Container height="100%" w="100%">
-      <Stack spacing={8} direction="row" justifyContent="space-between">
-        <Heading as="h2" p="4" fontFamily="QuickSand" fontWeight="bold">
-          Search by Cuisine
-        </Heading>
-        <AddMyRecipeButton />
-      </Stack>
+    <Container height="100%" maxWidth="100%" className={classes.container}>
+      <Container>
+        <Stack className={classes.stack}>
+          <Heading fontFamily="QuickSand" fontWeight="bold">
+            Search by Cuisine
+          </Heading>
+          <AddMyRecipeButton />
+        </Stack>
 
-      <InputGroup spacing={4}>
-        <InputLeftElement
-          pointerEvents="none"
-          children={<SearchIcon color="gray.300" />}
-        />
-        <Input
-          onChange={onChangeTextHandler}
-          placeholder="Type a name of meal or cuisine"
-        ></Input>
-      </InputGroup>
+        <Center marginTop="20px" alignItems="baseline" justifyContent="center">
+          <FormLabel textAlign="right">My own recipes</FormLabel>
+          <Switch
+            margin="auto"
+            colorScheme="teal"
+            size="lg"
+            onChange={onClickActivateExternalRecipes}
+            isChecked={showExternalRecipes}
+          />
+          <FormLabel margin="10px">Discover recipes</FormLabel>
+        </Center>
 
-      <Stack
-        margin={10}
-        spacing={8}
-        direction="row"
-        justifyContent="space-between"
+        {showExternalRecipes && cuisines?.length > 0 && (
+          <>
+            <InputGroup spacing={4}>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<SearchIcon color="gray.300" />}
+              />
+              <Input
+                onChange={onChangeTextHandler}
+                placeholder="Type a name of meal or cuisine"
+              ></Input>
+            </InputGroup>
+
+            <Select
+              marginTop="10px"
+              onChange={onChangeHandler}
+              id="countries"
+              placeholder="I choose a cuisine from ..."
+            >
+              {cuisines
+                .sort((cuisineA, cuisineB) => cuisineA.localeCompare(cuisineB))
+                .map((cuisine, index) => (
+                  <option value={cuisine} key={index}>
+                    {cuisine[0].toUpperCase() + cuisine.substring(1)}
+                  </option>
+                ))}
+            </Select>
+          </>
+        )}
+      </Container>
+      <Container
+        display="flex"
+        justifyContent="center"
+        flexWrap="wrap"
+        maxWidth="100%"
+        marginTop="20px"
+        marginLeft="0"
+        padding="0"
       >
-        <Stack align="center" direction="row">
-          <FormLabel>My own recipes</FormLabel>
-          <Switch
-            colorScheme="teal"
-            size="lg"
-            onChange={onClickInternalRecipes}
-          />
-        </Stack>
-
-        <Stack align="center" direction="row">
-          <FormLabel>Discover more recipes</FormLabel>
-          <Switch
-            onChange={onChangeExternalRecipes}
-            colorScheme="teal"
-            size="lg"
-          />
-        </Stack>
-      </Stack>
-
-      {showInternalRecipes && (
-        <Container display="flex" flexWrap="wrap" maxWidth="100%">
-          {recipes.map((recipe) => (
-            <MealItem key={recipe.id} recipe={recipe} />
-          ))}
-        </Container>
-      )}
-
-      {showExternalRecipes && cuisines?.length > 0 && (
-        <Select
-          onChange={onChangeHandler}
-          id="countries"
-          placeholder="I choose a cuisine from ..."
-        >
-          {cuisines
-            .sort((cuisineA, cuisineB) => cuisineA.localeCompare(cuisineB))
-            .map((cuisine, index) => (
-              <option value={cuisine} key={index}>
-                {cuisine[0].toUpperCase() + cuisine.substring(1)}
-              </option>
-            ))}
-        </Select>
-      )}
-      {/* <Container display="flex" flexWrap="wrap" maxWidth="100%">
         {recipes.map((recipe) => (
           <MealItem key={recipe.id} recipe={recipe} />
         ))}
-      </Container> */}
+      </Container>
     </Container>
   );
 };

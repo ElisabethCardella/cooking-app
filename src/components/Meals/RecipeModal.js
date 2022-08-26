@@ -12,7 +12,7 @@ import {
 import { useContext, useEffect } from "react";
 import OpenRecipesContext from "../../store/OpenRecipesContext";
 import Card from "../UI/Card/Card";
-import classes from "./RecipeModal.module.css";
+import classes from "./RecipeModal.module.scss";
 import { TimeIcon, ViewIcon } from "@chakra-ui/icons";
 import { GiCookingGlove } from "react-icons/gi";
 

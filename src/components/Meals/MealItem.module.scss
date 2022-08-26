@@ -1,0 +1,66 @@
+@import "/src/scss/variables.scss";
+
+div .RecipeMealName {
+  font-size: 3vmin;
+  color: $primary-color;
+}
+
+.boxItem {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  margin: 1em;
+  max-width: 45%;
+  // // bg={useColorModeValue("white", "gray.800")}
+}
+
+.timeOfPreparation {
+  display: inline-block;
+}
+
+@media (max-width: 500px) {
+  .timeOfPreparation {
+    display: none;
+  }
+  .boxItem {
+    padding: 0.5em;
+    margin: 0.5em;
+
+    max-width: 45%;
+  }
+}
+
+// .title {
+//   font-weight: bold;
+//   font-size: 1.5rem;
+// }
+
+// .description {
+//   font-style: italic;
+// }
+
+// .img {
+//   width: 200px;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+//   border-radius: 10px;
+// }
+
+// .options {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+
+//   height: 100%;
+// }
+
+.icon-wrapper {
+  width: 25px;
+}
+
+.icon-wrapper:hover {
+  cursor: pointer;
+}
+
+.icon-wrapper:hover path {
+  color: black;
+}

@@ -1,0 +1,18 @@
+@import "/src/scss/variables.scss";
+
+.colorBacgroundFooter {
+  background-color: $primary-color;
+}
+
+.color {
+  color: $textFooter-color;
+}
+
+.fontSizeIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.fontSizeText {
+  font-size: $font-size-text;
+}
