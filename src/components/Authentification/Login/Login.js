@@ -104,7 +104,9 @@ const Login = () => {
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={5} px={6}>
         <Stack align={"center"}>
-          <Heading className={classes.heading}>Log in to your account</Heading>
+          <Heading fontFamily="QuickSand" className={classes.heading}>
+            Log in to your account
+          </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             to discover all your future recipes !{" "}
           </Text>

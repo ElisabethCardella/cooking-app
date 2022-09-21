@@ -8,6 +8,8 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
+  Text,
+  Heading,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import OpenRecipesContext from "../../store/OpenRecipesContext";
@@ -15,6 +17,8 @@ import Card from "../UI/Card/Card";
 import classes from "./RecipeModal.module.scss";
 import { TimeIcon, ViewIcon } from "@chakra-ui/icons";
 import { GiCookingGlove } from "react-icons/gi";
+import { Box } from "@chakra-ui/react";
+import { InfoIcon } from "@chakra-ui/icons";
 
 const RecipeModal = () => {
   const { openRecipe, setOpenRecipe } = useContext(OpenRecipesContext);
@@ -39,6 +43,8 @@ const RecipeModal = () => {
     onClose();
   };
 
+  console.log("openRecipe => ", openRecipe);
+
   return (
     <Modal isOpen={isOpen} onClose={close}>
       <ModalOverlay />
@@ -53,20 +59,24 @@ const RecipeModal = () => {
             src={openRecipe.image}
             alt={openRecipe.name}
           />
-          <div className={classes.details}>
-            <div className={classes.glove}>
-              <GiCookingGlove />
-              {openRecipe.difficulty}
-            </div>
-            <div>
-              <TimeIcon margin="6px" />
-              {openRecipe.time}
-            </div>
-            <div>
+          {openRecipe.time > 0 && (
+            <div className={classes.details}>
+              <Text color={"gray"}>
+                <TimeIcon margin="6px" />
+                {openRecipe.time < 60
+                  ? openRecipe.time + "mins"
+                  : "≃ " + Math.round(openRecipe.time / 60) + "hour(s)"}
+              </Text>
+              {/* <div>
               <ViewIcon margin="6px" />
               {openRecipe.rating}stars
+            </div> */}
+              {/* <div className={classes.glove}>
+              <GiCookingGlove />
+              {openRecipe.difficulty}
+            </div> */}
             </div>
-          </div>
+          )}
           <Card className={classes.ingredients}>
             <h2 className={classes.subtitle}>Ingredients</h2>
             <br></br>
@@ -80,6 +90,12 @@ const RecipeModal = () => {
           <Card>
             <h2 className={classes.subtitle}>Steps</h2>
             <br></br>
+            <Box textAlign="center" py={10} px={6}>
+              <InfoIcon boxSize={"50px"} color={"blue.500"} />
+              <Heading as="h2" size="xl" mt={6} mb={2} fontFamily={"QuickSand"}>
+                A venir prochainement
+              </Heading>
+            </Box>
             <ol className={classes.ol}>
               {openRecipe?.steps?.map((step) => (
                 <li> {step}</li>

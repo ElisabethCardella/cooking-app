@@ -4,11 +4,13 @@ import {
   Button,
   FormControl,
   Input,
+  ListItem,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  OrderedList,
   Select,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -25,9 +27,9 @@ import React from "react";
 import { Divider } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContext } from "react";
-import RecipesContext from "../../../store/RecipesContext";
-import CuisinesContext from "../../../store/CuisinesContext";
-import UserContext from "../../../store/UserContext";
+import RecipesContext from "../../store/RecipesContext";
+import CuisinesContext from "../../store/CuisinesContext";
+import UserContext from "../../store/UserContext";
 
 const AddMyRecipeButton = () => {
   const [enteredNameMeal, setenteredNameMeal] = useState(null);
@@ -217,7 +219,7 @@ const AddMyRecipeButton = () => {
               onChange={timeNeededChangeHandler}
             >
               <NumberInput max={50} min={1} step="1">
-                <NumberInputField placeholder="Time needed" />
+                <NumberInputField placeholder="Time needed in minutes" />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -257,6 +259,13 @@ const AddMyRecipeButton = () => {
               placeholder="Type your ingredients here... PUT CHECK LIST"
               value={enteredIngredientsMeal}
             >
+              {/* <OrderedList>
+                <ListItem>Lorem ipsum dolor sit amet</ListItem>
+                <ListItem>Consectetur adipiscing elit</ListItem>
+                <ListItem>Integer molestie lorem at massa</ListItem>
+                <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+              </OrderedList> */}
+
               {/* <div>
                 <Checkbox defaultChecked>
                   <Input type="text" />

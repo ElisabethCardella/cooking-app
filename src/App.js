@@ -2,7 +2,7 @@ import { VStack } from "@chakra-ui/react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SelectCuisinePage from "./pages/SelectCuisinePage";
-import FavouritePage from "./pages/FavouritePage";
+import LibrairyPage from "./pages/LibrairyPage";
 import ConnexionPage from "./pages/ConnexionPage";
 import Home from "./pages/Home";
 import FavoriteRecipeContextProvider from "./store/FavouritesContextProvider";
@@ -12,6 +12,7 @@ import RecipesContextProvider from "./store/RecipesContextProvider";
 import CuisinesContextProvider from "./store/CuisinesContextProvider";
 import SignUp from "./components/Authentification/SignUp/SignUp";
 import UserContextProvider from "./store/UserContextProvider";
+import ContactPage from "./pages/ContactPage/ContactPage";
 
 function App() {
   return (
@@ -32,8 +33,9 @@ function App() {
                     element={<SelectCuisinePage />}
                   />
                   <Route path="/ConnexionPage" element={<ConnexionPage />} />
-                  <Route path="/FavouritePage" element={<FavouritePage />} />
+                  <Route path="/LibrairyPage" element={<LibrairyPage />} />
                   <Route path="/Signup" element={<SignUp />} />
+                  <Route path="/ContactPage" element={<ContactPage />} />
                 </Routes>
               </VStack>
               <>

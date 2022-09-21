@@ -9,7 +9,11 @@ function Layout(props) {
       <Header />
       <div
         className={classes.backgroundColor}
-        style={{ maxHeight: "calc(100vh - 100px)", overflow: "auto" }}
+        style={{
+          width: "100%",
+          maxHeight: "calc(100vh - 100px)",
+          overflow: "auto",
+        }}
       >
         {props.children}
       </div>

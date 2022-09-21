@@ -1,6 +1,7 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import UserContext from "../../store/UserContext";
+import classes from "./WelcomeUser.module.scss";
 
 const WelcomeUser = () => {
   const DateToday = new Date();
@@ -21,8 +22,16 @@ const WelcomeUser = () => {
 
   return (
     <Container>
-      <Heading>{generateWelcomeMessage()}</Heading>
-      <Text>{user?.firstName}</Text>
+      <Heading className={classes.headingTitle} fontFamily="QuickSand">
+        {generateWelcomeMessage()}
+      </Heading>
+      <Text
+        className={classes.headingTitle}
+        fontFamily="QuickSand"
+        fontSize="24px"
+      >
+        {user?.firstName}
+      </Text>
     </Container>
   );
 };

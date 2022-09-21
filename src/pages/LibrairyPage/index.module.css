@@ -1,0 +1,20 @@
+.container {
+  height: calc(80vh - 80px);
+}
+
+.stack {
+  direction: row;
+  justify-content: "center";
+}
+
+.heading {
+  padding: 4;
+  font-family: "QuickSand";
+  font-weight: 100;
+}
+
+@media (max-width: 500px) {
+  .addButton {
+    color: blanchedalmond;
+  }
+}

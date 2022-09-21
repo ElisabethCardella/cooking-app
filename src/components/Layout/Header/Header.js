@@ -60,7 +60,9 @@ const Header = () => {
             </MenuGroup>
             <MenuDivider />
             <MenuGroup title="Help">
-              <MenuItem>Contact</MenuItem>
+              <Link to="/ContactPage">
+                <MenuItem>Contact</MenuItem>
+              </Link>
               <MenuItem>FAQ</MenuItem>
             </MenuGroup>
           </MenuList>

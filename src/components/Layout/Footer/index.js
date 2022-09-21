@@ -40,13 +40,13 @@ const Footer = () => {
                 />
               </Center>
               <Text marginTop="3px" className={classes.color}>
-                Cuisine
+                Search
               </Text>
             </Box>
           </Button>
         </Link>
         <Spacer />
-        <Link to="/FavouritePage">
+        <Link to="/LibrairyPage">
           <Button bg="none">
             <Box>
               <Center>
@@ -58,7 +58,7 @@ const Footer = () => {
                 marginTop="3px"
                 className={`${classes.fontSizeText} ${classes.color}`}
               >
-                Favourites
+                My librairy
               </Text>
             </Box>
           </Button>

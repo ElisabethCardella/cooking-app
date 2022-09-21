@@ -1,42 +1,45 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
-  Center,
   Container,
-  FormLabel,
   Heading,
   Input,
   InputGroup,
   InputLeftElement,
   Select,
   Stack,
-  Switch,
 } from "@chakra-ui/react";
 import { useEffect, useContext, useState } from "react";
 import { getRecipes } from "../../services/recipesService";
 import CuisinesContext from "../../store/CuisinesContext";
+import OpenRecipesContext from "../../store/OpenRecipesContext";
 import RecipesContext from "../../store/RecipesContext";
 import UserContext from "../../store/UserContext";
 import MealItem from "../Meals/MealItem";
-import AddMyRecipeButton from "./AddMyRecipeButton/AddMyRecipeButton";
+import RandomMealItem from "../RandomMealItem/RandomMealItem";
+
 import classes from "./index.module.scss";
+import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 
 const Selector = () => {
-  const { cuisines } = useContext(CuisinesContext);
-  const { recipes, setRecipes } = useContext(RecipesContext);
   const { user } = useContext(UserContext);
   const [selectedCuisine, setSelectedCuisine] = useState(null);
   const [enteredText, setEnteredText] = useState(null);
   const [showExternalRecipes, setShowExternalRecipes] = useState(false);
+  const { setOpenRecipe } = useContext(OpenRecipesContext);
+  const { recipes, setRecipes } = useContext(RecipesContext);
+  const { cuisines, setCuisines } = useContext(CuisinesContext);
+  console.log(showExternalRecipes);
+  const [randomRecipe, setRandomRecipe] = useState();
 
   useEffect(() => {
-    getRecipes(showExternalRecipes, enteredText, selectedCuisine, user).then(
-      (data) => setRecipes(data)
+    getRecipes("external", enteredText, selectedCuisine, user).then((data) =>
+      setRecipes(data)
     ); //the order is matter and not the name of it
   }, [selectedCuisine, enteredText, showExternalRecipes]);
 
-  const onClickActivateExternalRecipes = () => {
-    setShowExternalRecipes(!showExternalRecipes);
-  };
+  // const onClickActivateExternalRecipes = () => {
+  //   setShowExternalRecipes(!showExternalRecipes);
+  // };
 
   const onChangeHandler = (event) => {
     setSelectedCuisine(event.target.value);
@@ -49,19 +52,22 @@ const Selector = () => {
     }, 3000);
   };
 
+  const onShowRecipeHandler = () => {
+    return setOpenRecipe(randomRecipe);
+  };
+
   console.log(recipes);
 
   return (
-    <Container height="100%" maxWidth="100%" className={classes.container}>
+    <Container height="100%" maxWidth="100%">
       <Container>
         <Stack className={classes.stack}>
-          <Heading fontFamily="QuickSand" fontWeight="bold">
+          <Heading fontFamily="QuickSand" fontWeight="bold" margin={"20px"}>
             Search by Cuisine
           </Heading>
-          <AddMyRecipeButton />
         </Stack>
 
-        <Center marginTop="20px" alignItems="baseline" justifyContent="center">
+        {/* <Center marginTop="20px" alignItems="baseline" justifyContent="center">
           <FormLabel textAlign="right">My own recipes</FormLabel>
           <Switch
             margin="auto"
@@ -71,9 +77,9 @@ const Selector = () => {
             isChecked={showExternalRecipes}
           />
           <FormLabel margin="10px">Discover recipes</FormLabel>
-        </Center>
+        </Center> */}
 
-        {showExternalRecipes && cuisines?.length > 0 && (
+        {cuisines?.length > 0 && (
           <>
             <InputGroup spacing={4}>
               <InputLeftElement
@@ -115,6 +121,7 @@ const Selector = () => {
         {recipes.map((recipe) => (
           <MealItem key={recipe.id} recipe={recipe} />
         ))}
+        {recipes.length === 0 && <RandomMealItem maxWidth="900px" />}
       </Container>
     </Container>
   );
