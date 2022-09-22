@@ -141,7 +141,7 @@ const ContactPage = () => {
                             color="white"
                             _hover={{}}
                           >
-                            Envoyer
+                            Envoyer message
                           </Button>
                         </FormControl>
                       </VStack>
