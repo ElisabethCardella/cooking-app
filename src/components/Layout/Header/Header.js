@@ -63,7 +63,6 @@ const Header = () => {
               <Link to="/ContactPage">
                 <MenuItem>Contact</MenuItem>
               </Link>
-              <MenuItem>FAQ</MenuItem>
             </MenuGroup>
           </MenuList>
         </Menu>

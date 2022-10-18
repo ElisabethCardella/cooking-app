@@ -109,7 +109,7 @@ const ContactPage = () => {
                           </InputGroup>
                         </FormControl>
                         <FormControl id="name">
-                          <FormLabel>Mail</FormLabel>
+                          <FormLabel>Ton adresse mail</FormLabel>
                           <InputGroup borderColor="#E0E1E7">
                             <InputLeftElement pointerEvents="none" />
                             <Input
@@ -137,7 +137,7 @@ const ContactPage = () => {
                             isDisabled={!names || !email || !message}
                             type="submit"
                             variant="solid"
-                            bg="#0D74FF"
+                            bg="#a63760"
                             color="white"
                             _hover={{}}
                           >
