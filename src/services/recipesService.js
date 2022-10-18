@@ -1,6 +1,8 @@
+import { backendUrl } from "../helpers/backendUrl";
+
 export const getRecipes = (showExternalRecipes, cuisine, enteredText, user) => {
   console.log(user);
-  let url = "http://localhost:4000/recipes";
+  let url = backendUrl + "/recipes";
 
   if (showExternalRecipes) {
     url += "?type=external";
@@ -22,7 +24,7 @@ export const getRecipes = (showExternalRecipes, cuisine, enteredText, user) => {
 };
 
 export const getFavouriteRecipes = (user) => {
-  let url = "http://localhost:4000/recipes?favouritedBy=" + user._id; //favouriteBy is not optional like the other one in getRecipes()
+  let url = backendUrl + "/recipes?favouritedBy=" + user._id; //favouriteBy is not optional like the other one in getRecipes()
 
   return fetch(url)
     .then((resp) => resp.json())

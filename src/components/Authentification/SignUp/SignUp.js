@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { backendUrl } from "../../../helpers/backendUrl";
 import Layout from "../../Layout";
 import classes from "./SignUp.module.scss";
 
@@ -69,7 +70,7 @@ const Login = () => {
 
     event.preventDefault();
 
-    fetch("http://localhost:4000/api/auth/signup", {
+    fetch(backendUrl + "/api/auth/signup", {
       // Adding method type
       method: "POST",
 

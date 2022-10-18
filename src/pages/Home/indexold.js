@@ -10,6 +10,7 @@ import OpenRecipesContext from "../../store/OpenRecipesContext";
 import { getRecipes } from "../../services/recipeService";
 import RecipesContext from "../../store/RecipesContext";
 import CuisinesContext from "../../store/CuisinesContext";
+import { backendUrl } from "../../helpers/backendUrl";
 
 function Home() {
   const [randomRecipe, setRandomRecipe] = useState();
@@ -23,7 +24,7 @@ function Home() {
       return;
     }
 
-    let url = "http://localhost:4000/recipes";
+    let url = backendUrl + "/recipes";
 
     const randomCuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
 

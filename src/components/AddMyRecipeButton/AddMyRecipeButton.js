@@ -30,6 +30,7 @@ import { useContext } from "react";
 import RecipesContext from "../../store/RecipesContext";
 import CuisinesContext from "../../store/CuisinesContext";
 import UserContext from "../../store/UserContext";
+import { backendUrl } from "../../helpers/backendUrl";
 
 const AddMyRecipeButton = () => {
   const [enteredNameMeal, setenteredNameMeal] = useState(null);
@@ -93,7 +94,7 @@ const AddMyRecipeButton = () => {
 
     event.preventDefault();
 
-    fetch("http://localhost:4000/recipes", {
+    fetch(backendUrl + "/recipes", {
       // Adding method type
       method: "POST",
 

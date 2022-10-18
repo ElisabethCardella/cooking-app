@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../../store/UserContext";
 import classes from "./Login.module.scss";
+import { backendUrl } from "../../../helpers/backendUrl";
 
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState();
@@ -59,7 +60,7 @@ const Login = () => {
       setErrorMessage(response.message);
     };
 
-    fetch("http://localhost:4000/api/auth/login", {
+    fetch(backendUrl + "/api/auth/login", {
       // Adding method type
       method: "POST",
 

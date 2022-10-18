@@ -16,6 +16,7 @@ import { useContext, useState } from "react";
 import OpenRecipesContext from "../../store/OpenRecipesContext";
 import UserContext from "../../store/UserContext";
 import RecipesContext from "../../store/RecipesContext";
+import { backendUrl } from "../../helpers/backendUrl";
 
 /*
 1. removed the icon because it's fucked
@@ -36,7 +37,7 @@ const MealItem = (props) => {
   console.log(user);
 
   const onClickHandler = () => {
-    let url = "http://localhost:4000/recipes/" + props.recipe._id + "/";
+    let url = backendUrl + "/recipes/" + props.recipe._id + "/";
 
     if (!isFavourite) {
       url += "favourite";

@@ -19,6 +19,7 @@ import { BsPerson } from "react-icons/bs";
 import { useState } from "react";
 import Layout from "../../components/Layout";
 import axios from "axios";
+import { backendUrl } from "../../helpers/backendUrl";
 
 const ContactPage = () => {
   const [names, setNames] = useState("");
@@ -44,7 +45,7 @@ const ContactPage = () => {
 
     try {
       setLoading(true);
-      const {} = await axios.post(`http://localhost:4000/api/email`, {
+      const {} = await axios.post(backendUrl + "/api/email`", {
         names,
         email,
         message,
